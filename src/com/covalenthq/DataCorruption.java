@@ -25,7 +25,9 @@ public class DataCorruption {
 	private static final int TIMEOUT = 60;
 	
 	/**
+	 * Main Method
 	 * 
+	 * @brief Triggers data collection and displays bar graph (histogram)
 	 * @param args
 	 * @throws IOException
 	 * @throws InterruptedException
@@ -70,7 +72,9 @@ public class DataCorruption {
 	}
 	
 	/**
+	 * collectCurrencyNullData
 	 * 
+	 * @brief Adds currencies which contain null data to currencyMap 
 	 * @param currencyMap
 	 * @throws IOException
 	 */
@@ -106,7 +110,9 @@ public class DataCorruption {
 	}
 	
 	/**
+	 * readJSONfromUrl
 	 * 
+	 * @brief Parse each line of JSON from API link into String
 	 * @param urlLink
 	 * @return JSON in string
 	 * @throws IOException

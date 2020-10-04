@@ -22,6 +22,7 @@ public class BarGraph extends JFrame {
 	/**
 	 * Constructor
 	 * 
+	 * @brief Creates bar graph with given data
 	 * @param title
 	 * @param chartTitle
 	 * @param categoryAxis
@@ -56,8 +57,7 @@ public class BarGraph extends JFrame {
 	/**
 	 * createDataset
 	 * 
-	 * convert data set from Map<String, Integer> to CategoryDataset format
-	 * 
+	 * @brief Convert dataset from Map<String, Integer> to CategoryDataset format
 	 * @param data
 	 * @param size
 	 * @return CategoryDataset
