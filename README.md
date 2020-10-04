@@ -1,6 +1,7 @@
 # Covalent Take-home Assignment
 
 Completed by [Cindy Lee](https://www.linkedin.com/in/cindyhslee/) :smile:
+
 Refer to codes attached below to check the completion of the assignment.
 
 ### Code
