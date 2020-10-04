@@ -40,7 +40,7 @@ public class BarGraph extends JFrame {
 	    /* Create bar chart */  
 	    JFreeChart chart=ChartFactory.createBarChart (  
 	    		chartTitle,		// Chart Title  
-	    		categoryAxis,	// Category axis  
+	    		categoryAxis,		// Category axis  
 	    		valueAxis,		// Value axis  
 	        dataset,			// Data
 	        PlotOrientation.HORIZONTAL,  
@@ -49,7 +49,7 @@ public class BarGraph extends JFrame {
 	        false  
 	    );  
 	  
-	    ChartPanel panel=new ChartPanel(chart);  
+	    ChartPanel panel = new ChartPanel(chart);  
 	    setContentPane(panel);  
 	}
 	
@@ -68,14 +68,13 @@ public class BarGraph extends JFrame {
 	    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 	    String type = "default";
 	    
-	    for (Map.Entry<String,Integer> entry : data.entrySet()) 
-        { 
-            String key  = entry.getKey(); 
-            Integer value = entry.getValue();
+	    for (Map.Entry<String,Integer> entry : data.entrySet()) { 
+	    		String key  = entry.getKey(); 
+	    		Integer value = entry.getValue();
             dataset.addValue(value, type, key);
             //System.out.println(key + " " + value);
-        } 
+	    } 
 	    
 	    return dataset;  
-	  }  
+	}  
 }

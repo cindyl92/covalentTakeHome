@@ -67,7 +67,7 @@ public class DataCorruption {
 	    example.setVisible(true);
 		
 	    return;
-    }
+	}
 	
 	/**
 	 * 
@@ -101,6 +101,7 @@ public class DataCorruption {
 	            		currencyMap.put(currencyName, 1); 
 		    }
 		}
+		
 		return;
 	}
 	
@@ -143,6 +144,7 @@ public class DataCorruption {
 			System.out.println("URL Failed");
 			e.printStackTrace();			
 		}
+		
 		return inline;
 	}
 }
