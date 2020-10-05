@@ -1,5 +1,6 @@
 package com.covalenthq;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -7,6 +8,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 import java.lang.RuntimeException;
 import javax.swing.WindowConstants;
@@ -19,10 +21,8 @@ import org.json.*;
 
 public class DataCorruption {
 	
-	private static final String API_URL = "https://api.covalenthq.com/v1/ticker/";
-	private static final String API_KEY = "ckey_be61e76bc0dd4012890ecdc3564";
 	private static final String INVALID_URL = "invalid";
-	private static final int TIMEOUT = 60;
+	private static final int TIMEOUT = 1;
 	
 	/**
 	 * Main Method
@@ -33,7 +33,6 @@ public class DataCorruption {
 	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws IOException, InterruptedException {
-		System.out.println("start");
 		
 		Map<String, Integer> currencyMap = new HashMap<String, Integer>();
 		
@@ -56,7 +55,7 @@ public class DataCorruption {
 			//System.out.println("Runtime sec "+runtimeSeconds);
 			
 			/* Sleep for one minute to wait for API update */
-			Thread.sleep(60000 - (runtimeSeconds * 1000));
+			//Thread.sleep(60000 - (runtimeSeconds * 1000));
 		}
 		
 		BarGraph example = new BarGraph("Bar Chart Window", "Data Corruption", "Currencies", "Values", currencyMap);
@@ -79,8 +78,12 @@ public class DataCorruption {
 	 * @throws IOException
 	 */
 	public static void collectCurrencyNullData(Map<String, Integer> currencyMap) throws IOException {
-		
-		String jsonString = readJSONfromUrl(API_URL + "?key=" + API_KEY);
+		/* Grab url and key from config file */ 
+		FileReader reader=new FileReader("./././resources/config.properties");
+		Properties p=new Properties();  
+	    p.load(reader);  
+	    
+		String jsonString = readJSONfromUrl(p.getProperty("url") + "?key=" + p.getProperty("key"));
 		
 		if (jsonString == INVALID_URL || currencyMap == null) {
 			System.out.println("Invalid data");
@@ -120,8 +123,14 @@ public class DataCorruption {
 	public static String readJSONfromUrl(String urlLink) throws IOException {
 		/* check if url is null or empty */
 		if (urlLink == null || urlLink == "") return INVALID_URL;
+		
+		/* Grab url and key from config file */ 
+		FileReader reader=new FileReader("./././resources/config.properties");
+		Properties p=new Properties();  
+	    p.load(reader);  
+	    
 		/* check if url is valid */
-		if (!urlLink.contains(API_URL) || !urlLink.contains(API_KEY)) return INVALID_URL;		
+		if (!urlLink.contains(p.getProperty("url")) || !urlLink.contains(p.getProperty("key"))) return INVALID_URL;		
 		
 		String inline = new String();
 		try {
